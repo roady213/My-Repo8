@@ -201,9 +201,11 @@
           $scope.systems = _.uniq(tempSystems);
           $scope.businessSectors = _.uniq(tempBusinessSectors);
         });
-
-        $scope.updateDiagram = function () {
-
+        $scope.updateDiagram = async function () {
+			if (!window.mermaid) {
+				console.warn("Mermaid not loaded yet.");
+				return;
+			  }
           $scope.filteredConceptualView = _.filter($scope.conceptualViewData, function (obj) {
             var result = false;
 

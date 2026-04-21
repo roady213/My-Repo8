@@ -253,11 +253,20 @@
             );
           });
 
-          if (conceptualViewMarkup != "") {
-            mermaid.render('mermaidDiagramHolder', conceptualViewMarkup, function (svgCode) {
-              document.getElementById('mermaidDiagram').innerHTML = svgCode;
-            });
-          }
+          if (conceptualViewMarkup.trim() !== "") {
+			  window.mermaid
+				.render('mermaidDiagramHolder', conceptualViewMarkup)
+				.then(({ svg }) => {
+				  document.getElementById('mermaidDiagram').innerHTML = svg;
+				})
+				.catch(err => {
+				  console.error("Mermaid render failed:", err);
+				  document.getElementById('mermaidDiagram').innerHTML =
+					'<pre style="color:#b00020;white-space:pre-wrap;">' +
+					(err && err.message ? err.message : err) +
+					'</pre>';
+				});
+			}
         };
 
       }])

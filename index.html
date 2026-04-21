@@ -137,16 +137,13 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
   <script src="https://kendo.cdn.telerik.com/2020.3.1118/js/angular.min.js"></script>
   <script src="https://kendo.cdn.telerik.com/2020.3.1118/js/kendo.all.min.js"></script>
- <!-- <script src="https://cdn.jsdelivr.net/npm/mermaid@9.4.3/dist/mermaid.min.js"></script>-->
-  
+ 
   <script type="module">
     import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
     import elkLayouts from "https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0/dist/mermaid-layout-elk.esm.min.mjs";
 
-    // Register ELK layouts
     mermaid.registerLayoutLoaders(elkLayouts);
 
-    // Enable ELK as the default layout engine
     mermaid.initialize({
 	  startOnLoad: false,
 	  layout: "elk"
@@ -156,12 +153,7 @@
     window.mermaid = mermaid;
   </script>
 
-
   <script>
-    mermaid.mermaidAPI.initialize({
-      startOnLoad: false
-    });
-
     var jq = $.noConflict();
 
     angular.module('eaiConceptualViewApp', ["kendo.directives"])
